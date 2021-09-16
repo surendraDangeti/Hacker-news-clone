@@ -23,7 +23,7 @@ const onSubmit = ()=>{
         <center>
        <h1 className="pageHeading">Login</h1>
        <div>
-          <label>Email:</label>
+          <label>username:</label>
           <input className="" type="email"   value={email}  onChange={e => setEmail(e.target.value)}/>
        </div>
        <div>
