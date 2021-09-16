@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useHistory, Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
  
 
 const SignUp = () => {
@@ -19,8 +19,15 @@ const onSubmit = ()=>{
        const auth = getAuth();
          
        createUserWithEmailAndPassword(auth, email, password)
-               .then(() => history.push('/home'))
-               .catch((e) =>  history.push('/home'))
+               .then(() => { 
+               signInWithEmailAndPassword(auth, email, password)
+               .then((userCredential) => {
+                localStorage.setItem('token', userCredential._tokenResponse.idToken);
+                history.push('/')
+            })
+})
+               .catch((e) => (e.message))
+               
 }
     
     
@@ -35,7 +42,7 @@ const onSubmit = ()=>{
           <label>password:</label>
           <input className="" type="password"  value={password}   onChange={e => setPassword(e.target.value)}/>
        </div>
-       <Link to="/">
+       <Link to="/login">
         Alreday have an account?
         </Link>
         <br/>

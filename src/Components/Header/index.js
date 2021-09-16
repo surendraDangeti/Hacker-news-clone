@@ -5,25 +5,33 @@ import './index.css'
 
 const Header = ()=>{
     let history = useHistory()
+    const [ status, setStatus ] = useState(false)
+
 
 const logout = ()=>{
         signOut(auth)
             .then(() => {
                 localStorage.removeItem('token')
-                history.push('/')
+                alert("logout successful")
+                history.push("/") 
             })
             .catch((e) => alert(e.message))
     }
 
 
+  const login = () => {
+      history.push("/login")
+  }  
+
+
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (!token) {
-            history.push('/')
-       
-          
+        if (token) {
+            setStatus(true)    
+        }else if (!token){
+            setStatus(false)
         }
-    },[])
+    },[logout])
 
     const auth = getAuth();
 
@@ -35,7 +43,7 @@ const logout = ()=>{
                   Y 
               </h1>
               <div className="nav-menu-container">
-              <Link to="/home" className="Link">
+              <Link to="/" className="Link">
               <h1 className="navheading">
                   Hacker News
               </h1>
@@ -47,9 +55,7 @@ const logout = ()=>{
                   new  
               </li>
               </Link>
-              <li className="nav-menu-item">
-                  |
-              </li>
+              <li className="nav-menu-item">|</li>
               <li className="nav-menu-item">
                   past 
               </li>
@@ -80,28 +86,43 @@ const logout = ()=>{
               <li className="nav-menu-item">
                   |
               </li>
-  
               <Link to="/submit" className="Link">
               <li className="nav-menu-item">
                   submit
               </li>
               </Link>
             <li>
-            <button
-              className="logout-mobile-btn"
+            {status ?
+             <button
+               className="logout-mobile-btn"
               onClick={logout}
             >
               Logout
+            </button>: <button
+               className="logout-mobile-btn"
+              onClick={login}
+            >
+              Login
             </button>
+             
+            }
             </li>
             </ul>
             </div>
+            {status ?
              <button
               className="logout-desktop-btn"
               onClick={logout}
             >
               Logout
+            </button>: <button
+              className="logout-desktop-btn"
+              onClick={login}
+            >
+              Login
             </button>
+             
+            }
           </div>
       </nav>
     )

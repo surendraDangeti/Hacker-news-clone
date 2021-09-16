@@ -13,18 +13,18 @@ const onSubmit = ()=>{
        signInWithEmailAndPassword(auth, email, password)
            .then((userCredential) => {
                localStorage.setItem('token', userCredential._tokenResponse.idToken);
-               history.push('/Home')
+               history.push('/')
            })
            .catch(e => alert(e.message))
-   }
+    }
     
     
     return(
         <center>
        <h1 className="pageHeading">Login</h1>
        <div>
-          <label>Email:</label>
-          <input className="" type="email"   value={email}  onChange={e => setEmail(e.target.value)}/>
+          <label>username:</label>
+          <input className="" type="email"     value={email}  onChange={e => setEmail(e.target.value)}/>
        </div>
        <div>
           <label>password:</label>

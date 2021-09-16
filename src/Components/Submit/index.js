@@ -14,7 +14,7 @@ const Submit = () => {
  useEffect(() => {
      const token = localStorage.getItem('token');
      if (!token) {
-         history.push('/')
+         history.push('/login')
     }
 },[])
 
