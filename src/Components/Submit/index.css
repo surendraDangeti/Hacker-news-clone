@@ -1,0 +1,58 @@
+
+.submit-container{
+    display: flex;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+
+.container{
+    width: 80%;
+    max-width: 1100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    justify-content: space-around;
+    background-color:rgb(220,220,220);
+    height: 70%; 
+}
+
+
+.title-box{
+    min-width: 205px;
+    max-width: 580px;
+    margin: 15px;
+}
+
+.urlBox{
+    min-width: 205px;
+    max-width: 580px;
+    margin: 20px;
+}
+
+.boxName{
+    margin: 5px;
+}
+.text{
+    margin-top: 0px;
+    margin: 5px;
+}
+
+.postBtn{
+    background-color:orangered;
+    color: wheat;
+    font-weight:500;
+    margin: 35px;
+    margin-top:5px; 
+
+}
+
+.textArea{
+    width: 30vw;
+    height: 20vh; 
+}
+
+.text-areaContainer{
+    display: flex;
+    justify-content: flex-start;
+
+}

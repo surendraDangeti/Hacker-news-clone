@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import HomePage from './Components/Home/index.js'
+import Login from './Components/Login'
+import { initializeApp } from "firebase/app";
+import SignUp from './Components/SignUp/index.js';
+import  Submit from './Components/Submit/index.js'
 import './App.css';
 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDUNQ1mo7aeDe8fSmZvPjyo-d_9KNpS2mE",
+  authDomain: "hacker-news-fedcc.firebaseapp.com",
+  projectId: "hacker-news-fedcc",
+  storageBucket: "hacker-news-fedcc.appspot.com",
+  messagingSenderId: "1041879871037",
+  appId: "1:1041879871037:web:47f043986f7bd56df90454"
+};
+
+initializeApp(firebaseConfig);
+
+
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+       <BrowserRouter>
+       <Switch>
+       <Route exact path = "/" component={Login}/>
+       <Route exact path = "/signup" component= {SignUp}/>
+        <Route exact path = "/Home" component= {HomePage}/>
+        <Route exact path= "/new" component = {HomePage}/>
+        <Route exact path = "/submit" component = {Submit} /> 
+        </Switch>
+        </BrowserRouter>
+     </div>
+  )
 }
 
 export default App;
