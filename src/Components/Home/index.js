@@ -15,7 +15,8 @@ const register = {
 
 class HomePage extends React.Component{
     state = {
-        NewsData: []
+        NewsData: [],
+        NewData2: [],
     }
 
    componentDidMount(){
@@ -34,8 +35,11 @@ class HomePage extends React.Component{
      this.setState({NewsData: hackerData})
 }
 
+
   render(){
     const {NewsData} = this.state
+    const {NewData2} = this.state
+    console.log(NewData2)
     return(
              <div>
             <Header />
@@ -46,12 +50,11 @@ class HomePage extends React.Component{
                      NewsData.map(hackData => {
                     return <li key={hackData.id}>
                     <PageElements hackData={hackData} key={hackData.key} />
-                </li>   })}
+                </li>  })}
                    </ol>
                   </div>
+                  { NewData2.map(each => <h1>{each.title}</h1>) }
                   </div>
-                  <div className="footer">
-                 </div>
             </div>
 )};
 }

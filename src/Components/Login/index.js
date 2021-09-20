@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { useHistory, Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import "./index.css"
@@ -24,11 +24,11 @@ const onSubmit = ()=>{
        <h1 className="pageHeading">Login</h1>
        <div>
           <label>username:</label>
-          <input className="" type="email"   value={email}  onChange={e => setEmail(e.target.value)}/>
+          <input  type="email"   value={email}  onChange={e => setEmail(e.target.value)}/>
        </div>
        <div>
           <label>password:</label>
-          <input className="" type="password"  value={password}   onChange={e => setPassword(e.target.value)}/>
+          <input  type="password"  value={password}   onChange={e => setPassword(e.target.value)}/>
        </div>
        <Link to="/signup">
                         Create Account?

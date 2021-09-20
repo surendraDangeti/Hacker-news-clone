@@ -23,7 +23,7 @@ initializeApp(firebaseConfig);
 function App() {
   
   return (
-    <div>
+    
        <BrowserRouter>
        <Switch>
        <Route exact path = "/" component= {HomePage}/>
@@ -33,7 +33,6 @@ function App() {
         <Route exact path = "/submit" component = {Submit} /> 
         </Switch>
         </BrowserRouter>
-     </div>
   )
 }
 

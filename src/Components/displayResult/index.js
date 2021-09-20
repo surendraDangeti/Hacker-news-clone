@@ -3,7 +3,7 @@ const PageElements = props => {
     const { hackData} = props
     const { points, time, title, link} = hackData
 
-
+  
     return(
            <div className="news-page">
                <div className="news-content">
