@@ -30,7 +30,8 @@ const onSubmitpost = ()=>{
         title : text,
         link : link,
         id :  uuidv4(),
-        time: new Date()
+        time: new Date(),
+        points: 0
         }
     axios.post('https://hacker-news-fedcc-default-rtdb.firebaseio.com/register.json', register)
     .then(()=>alert("Submitted successfully"))
@@ -40,7 +41,8 @@ const onSubmitpost = ()=>{
         title : title,
         link : link,
         id :  uuidv4(),
-        time: new Date()
+        time: new Date(),
+        points: 0
 }     
     axios.post('https://hacker-news-fedcc-default-rtdb.firebaseio.com/register.json',  register)
     .then(()=>alert("Submitted successfully"))

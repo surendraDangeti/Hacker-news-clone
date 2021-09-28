@@ -1,40 +1,12 @@
-.news-page{
-    display: flex;
-  justify-content: center;
-  margin-top:0px;  
-}
-
-.news-content{
-    display:flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content:space-between;
-    width: 80%;
-    max-width: 1100px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    background-color:whitesmoke;
+.countBtn{
+   width: 7px;
+   height:7px;
+   font-weight: bold;
+   cursor: pointer; 
   }
-
-  .title{
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 7pt;
-        color: #828282; 
-        text-align: center;
-        
-  }
-  
-  .news-comments{
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 7px;
-    color: #828282; 
-    text-align: center;
-  }
-
   .upVote{
-
-      border: none;
-      font-weight: bold;
-
-      color:black;
+    border: none;
+    font-weight: bold;
+    margin-left: 3.5px;
+    cursor: pointer;
   }

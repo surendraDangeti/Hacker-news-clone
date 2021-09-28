@@ -5,55 +5,85 @@ import  PageElements from '../displayResult'
 import { v4 as uuidv4 } from 'uuid';
 import './index.css'
 
-const register = {
-    id :  uuidv4(),
-    title: 'AI Movie Posters',
-    link: 'https://news.ycombinator.com/item?id=28386508',
-    points: "1",
-    time: new Date()
-}
+const DBurl = axios.create({
+  baseURL: "https://hacker-news-fedcc-default-rtdb.firebaseio.com"
+})
 
 class HomePage extends React.Component{
     state = {
         NewsData: [],
-        NewData2: [],
     }
 
-   componentDidMount(){
-      this.getData()
+  upVote = (hackData)=> {
+    const{id} = hackData 
+    if (localStorage.getItem('token')){
+    const Data = {
+      id: hackData.id,
+      title: hackData.title,
+      link: hackData.link,
+      time: hackData.time,
+      points: hackData.points+1
+    }
+
+    axios.put(`https://hacker-news-fedcc-default-rtdb.firebaseio.com/register/${id}.json`, Data).then((response) => {
+      console.log(response);
+      this.fetchData()
+    })}
+
+  }
+  
+  downVote = (hackData)=> {
+    const{id} = hackData
+    const token = localStorage.getItem('token'); 
+    if (hackData.points >= 1 ){
+    const Data = {
+      id: hackData.id,
+      title: hackData.title,
+      link: hackData.link,
+      time: hackData.time,
+      points: hackData.points-1
+    }
+    const token = localStorage.getItem('token'); 
+    token &&  
+    axios.put(`https://hacker-news-fedcc-default-rtdb.firebaseio.com/register/${id}.json`, Data).then((response) => {
+      console.log(response);
+      this.fetchData()
+    })
+  }
+  }
 
 
-   }
+  componentDidMount(){
+     this.fetchData()
+  }
 
-   getData = async()=>{
-     const NewData = await axios('https://hacker-news-fedcc-default-rtdb.firebaseio.com/register.json', register)
-     var hackerData = []
-     for(let key in NewData.data){
-       let value = NewData.data[key]
-        hackerData.push(value)
-     }
-     this.setState({NewsData: hackerData})
-}
+  fetchData = () => {
+    DBurl.get("register.json").then((response)=> {
+      console.log(response)
 
+      const hackerData= []
+      for (let key in response.data){
+        hackerData.push({...response.data[key], id: key})
+      }
+      this.setState({NewsData: hackerData})
+    })
+  }
 
   render(){
     const {NewsData} = this.state
-    const {NewData2} = this.state
-    console.log(NewData2)
     return(
              <div>
             <Header />
-            <div className="main-container">
+           <div className="main-container">
                  <div className="app-container">
-                 <ol>
+                <ol>
                    {
-                     NewsData.map(hackData => {
-                    return <li key={hackData.id}>
-                    <PageElements hackData={hackData} key={hackData.key} />
+                     NewsData.map((hackData, index) => {
+                    return <li key={hackData.id}> 
+                    <PageElements hackData={hackData} postId={index+1} upVoteFunction = {this.upVote}  downVoteFunction = { this.downVote} key={hackData.key} />
                 </li>  })}
-                   </ol>
+                   </ol> 
                   </div>
-                  { NewData2.map(each => <h1>{each.title}</h1>) }
                   </div>
             </div>
 )};
