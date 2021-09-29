@@ -8,10 +8,10 @@ const DBurl = axios.create({
   baseURL: "https://hacker-news-fedcc-default-rtdb.firebaseio.com"
 })
 
-class HomePage extends React.Component{
+class PastPosts extends React.Component{
     state = {
         NewsData: [],
-        sortType: "desc"
+        sortType: "asc"
     }
 
   upVote = (hackData)=> {
@@ -50,7 +50,8 @@ class HomePage extends React.Component{
     })
   }
   }
- 
+
+
   componentDidMount(){
      this.fetchData()
   }
@@ -90,5 +91,5 @@ class HomePage extends React.Component{
 )};
 }
 
-export default HomePage
+export default  PastPosts 
 

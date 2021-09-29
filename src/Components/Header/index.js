@@ -56,9 +56,11 @@ const logout = ()=>{
               </li>
               </Link>
               <li className="nav-menu-item">|</li>
+              <Link  className="Link" to="/past">
               <li className="nav-menu-item">
                   past 
               </li>
+              </Link>
               <li className="nav-menu-item">
                   |
               </li>

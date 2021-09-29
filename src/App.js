@@ -5,6 +5,7 @@ import Login from './Components/Login'
 import { initializeApp } from "firebase/app";
 import SignUp from './Components/SignUp/index.js';
 import  Submit from './Components/Submit/index.js'
+import PastPosts from './Components/Pastposts';
 import './App.css';
 
 
@@ -23,13 +24,13 @@ initializeApp(firebaseConfig);
 function App() {
   
   return (
-    
        <BrowserRouter>
        <Switch>
-       <Route exact path = "/" component= {HomePage}/>
+       <Route exact path = "/" component= {PastPosts}/>
        <Route exact path = "/login" component={Login}/>
        <Route exact path = "/signup" component= {SignUp}/>
         <Route exact path= "/new" component = {HomePage}/>
+        <Route exact path = "/past" component = { PastPosts}/>
         <Route exact path = "/submit" component = {Submit} /> 
         </Switch>
         </BrowserRouter>
