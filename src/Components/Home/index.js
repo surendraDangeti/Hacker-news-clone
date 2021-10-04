@@ -14,7 +14,7 @@ class HomePage extends React.Component{
         sortType: "desc"
     }
 
-  upVote = (hackData)=> {
+  upVote = (hackData, up, down)=> {
     const{id} = hackData 
     if (localStorage.getItem('token')){
     const Data = {
@@ -27,12 +27,16 @@ class HomePage extends React.Component{
 
     axios.put(`https://hacker-news-fedcc-default-rtdb.firebaseio.com/register/${id}.json`, Data).then((response) => {
       console.log(response);
+      const a = document.getElementById(up).classList.add('upVote-none')
+      const b = document.getElementById(down).classList.remove('downVotenone')
+      console.log(a)
+      console.log(b)
       this.fetchData()
     })}
 
   }
   
-  downVote = (hackData)=> {
+  downVote = (hackData, up, down)=> {
     const{id} = hackData
     if (hackData.points >= 1 ){
     const Data = {
@@ -46,6 +50,10 @@ class HomePage extends React.Component{
     token &&  
     axios.put(`https://hacker-news-fedcc-default-rtdb.firebaseio.com/register/${id}.json`, Data).then((response) => {
       console.log(response);
+      const b = document.getElementById(down).classList.add('downVotenone')
+      // const a = document.getElementById(up).classList.remove('upVote-none')
+      // console.log(a)
+      console.log(b)
       this.fetchData()
     })
   }

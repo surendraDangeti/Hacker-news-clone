@@ -25,3 +25,18 @@
 }
 
 
+.upVote-none{
+   display: none; 
+}
+
+.downVotenone{
+    display: none; 
+ }
+
+.upVote-inline{
+    display: inline;
+}
+
+.downVote-inline{
+    display: inline;
+}

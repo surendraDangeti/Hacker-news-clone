@@ -11,19 +11,17 @@
 
 .card{
     align-self: center;
-    background-color:rgba(6, 31, 32, 0.637);
+    background-color:;
     padding: 25px;
     max-height: 500px;
     max-width: 50vw;
     width: 350px;
     border-radius:25px; 
-    border:solid 7px rgb(12, 239, 255);
-    
 
 
 }
 
-.loginBtn{
+.SignUpBtn{
     cursor: pointer;
     background-color:navy;
     color: white;
@@ -36,18 +34,17 @@
     font-family:'Courier New', Courier;
     font-weight: bold;
     text-align: center;
-    color:white;
 
 }
 
 .labelName{
     font-family: Arial, sans-serif;
     font-weight: bold;
-    color:white;
 }
 
 .link{
-    color:white;
+    color:wheat;
+    font-weight: 400;
     text-decoration: none;
 }
 

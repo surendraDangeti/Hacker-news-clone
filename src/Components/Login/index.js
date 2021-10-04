@@ -20,21 +20,23 @@ const onSubmit = ()=>{
     
     
     return(
-        <center>
+        <div className="pageContainer">
+        <div className="card">
        <h1 className="pageHeading">Login</h1>
        <div>
-          <label>username:</label>
-          <input  type="email"   value={email}  onChange={e => setEmail(e.target.value)}/>
+          <label className="labelName">username:</label>
+          <input  type="email" className="input" value={email} placeholder=' Email' onChange={e => setEmail(e.target.value)}/>
        </div>
        <div>
-          <label>password:</label>
-          <input  type="password"  value={password}   onChange={e => setPassword(e.target.value)}/>
+          <label  className="labelName">password:</label>
+          <input className="input" type="password"  value={password} placeholder=' Password'  onChange={e => setPassword(e.target.value)}/>
        </div>
-       <Link to="/signup">
+       <Link className="link" to="/signup">
                         Create Account?
                     </Link><br/>
        <button className= "loginBtn" onClick={onSubmit}>Login</button>
-       </center>
+       </div>
+       </div>
     )
 }
 
